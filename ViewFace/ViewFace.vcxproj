@@ -72,30 +72,39 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(ProjectName)\bin\$(Configuration)\$(PlatformTarget)</OutDir>
+    <IntDir>obj\$(Configuration)\$(PlatformTarget)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(ProjectName)\bin\$(Configuration)\$(PlatformTarget)</OutDir>
+    <IntDir>obj\$(Configuration)\$(PlatformTarget)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(ProjectName)\bin\$(Configuration)\$(PlatformTarget)</OutDir>
+    <IntDir>obj\$(Configuration)\$(PlatformTarget)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(ProjectName)\bin\$(Configuration)\$(PlatformTarget)</OutDir>
+    <IntDir>obj\$(Configuration)\$(PlatformTarget)</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level1</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;VIEWFACE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;VIEWFACE_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\vclib\seeta\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsManaged>false</CompileAsManaged>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\vclib\seeta\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\vclib\seeta\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SeetaAgePredictor600.lib;SeetaAgePredictor600d.lib;SeetaEyeStateDetector200.lib;SeetaEyeStateDetector200d.lib;SeetaFaceAntiSpoofingX600.lib;SeetaFaceAntiSpoofingX600d.lib;SeetaFaceDetector600.lib;SeetaFaceDetector600d.lib;SeetaFaceLandmarker600.lib;SeetaFaceLandmarker600d.lib;SeetaFaceRecognizer610.lib;SeetaFaceRecognizer610d.lib;SeetaFaceTracking600.lib;SeetaFaceTracking600d.lib;SeetaGenderPredictor600.lib;SeetaGenderPredictor600d.lib;SeetaMaskDetector200.lib;SeetaMaskDetector200d.lib;SeetaPoseEstimation600.lib;SeetaPoseEstimation600d.lib;SeetaQualityAssessor300.lib;SeetaQualityAssessor300d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)\$(TargetName)$(TargetExt)</OutputFile>
       <ProgramDatabaseFile>$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)\$(TargetName).pdb</ProgramDatabaseFile>
@@ -105,12 +114,15 @@
     <PostBuildEvent>
       <Message>copy /Y "$(SolutionDir)$(ProjectName)\Libraries\*.dll" "$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)"</Message>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>obj\$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level1</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;VIEWFACE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;VIEWFACE_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\vclib\seeta\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsManaged>false</CompileAsManaged>
@@ -119,7 +131,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\vclib\seeta\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\vclib\seeta\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SeetaAgePredictor600.lib;SeetaAgePredictor600d.lib;SeetaEyeStateDetector200.lib;SeetaEyeStateDetector200d.lib;SeetaFaceAntiSpoofingX600.lib;SeetaFaceAntiSpoofingX600d.lib;SeetaFaceDetector600.lib;SeetaFaceDetector600d.lib;SeetaFaceLandmarker600.lib;SeetaFaceLandmarker600d.lib;SeetaFaceRecognizer610.lib;SeetaFaceRecognizer610d.lib;SeetaFaceTracking600.lib;SeetaFaceTracking600d.lib;SeetaGenderPredictor600.lib;SeetaGenderPredictor600d.lib;SeetaMaskDetector200.lib;SeetaMaskDetector200d.lib;SeetaPoseEstimation600.lib;SeetaPoseEstimation600d.lib;SeetaQualityAssessor300.lib;SeetaQualityAssessor300d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)\$(TargetName)$(TargetExt)</OutputFile>
       <ProgramDatabaseFile>$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)\$(TargetName).pdb</ProgramDatabaseFile>
@@ -129,6 +141,9 @@
     <PostBuildEvent>
       <Message>copy /Y "$(SolutionDir)$(ProjectName)\Libraries\*.dll" "$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)"</Message>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>obj\$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -136,7 +151,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;VIEWFACE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;VIEWFACE_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\vclib\seeta\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsManaged>false</CompileAsManaged>
@@ -147,7 +162,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\vclib\seeta\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\vclib\seeta\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SeetaAgePredictor600.lib;SeetaAgePredictor600d.lib;SeetaEyeStateDetector200.lib;SeetaEyeStateDetector200d.lib;SeetaFaceAntiSpoofingX600.lib;SeetaFaceAntiSpoofingX600d.lib;SeetaFaceDetector600.lib;SeetaFaceDetector600d.lib;SeetaFaceLandmarker600.lib;SeetaFaceLandmarker600d.lib;SeetaFaceRecognizer610.lib;SeetaFaceRecognizer610d.lib;SeetaFaceTracking600.lib;SeetaFaceTracking600d.lib;SeetaGenderPredictor600.lib;SeetaGenderPredictor600d.lib;SeetaMaskDetector200.lib;SeetaMaskDetector200d.lib;SeetaPoseEstimation600.lib;SeetaPoseEstimation600d.lib;SeetaQualityAssessor300.lib;SeetaQualityAssessor300d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)\$(TargetName)$(TargetExt)</OutputFile>
       <ProgramDatabaseFile>$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)\$(TargetName).pdb</ProgramDatabaseFile>
@@ -157,6 +172,9 @@
     <PostBuildEvent>
       <Message>copy /Y "$(SolutionDir)$(ProjectName)\Libraries\*.dll" "$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)"</Message>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>obj\$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -164,7 +182,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;VIEWFACE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;VIEWFACE_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\vclib\seeta\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsManaged>false</CompileAsManaged>
@@ -175,7 +193,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\vclib\seeta\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\vclib\seeta\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SeetaAgePredictor600.lib;SeetaAgePredictor600d.lib;SeetaEyeStateDetector200.lib;SeetaEyeStateDetector200d.lib;SeetaFaceAntiSpoofingX600.lib;SeetaFaceAntiSpoofingX600d.lib;SeetaFaceDetector600.lib;SeetaFaceDetector600d.lib;SeetaFaceLandmarker600.lib;SeetaFaceLandmarker600d.lib;SeetaFaceRecognizer610.lib;SeetaFaceRecognizer610d.lib;SeetaFaceTracking600.lib;SeetaFaceTracking600d.lib;SeetaGenderPredictor600.lib;SeetaGenderPredictor600d.lib;SeetaMaskDetector200.lib;SeetaMaskDetector200d.lib;SeetaPoseEstimation600.lib;SeetaPoseEstimation600d.lib;SeetaQualityAssessor300.lib;SeetaQualityAssessor300d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)\$(TargetName)$(TargetExt)</OutputFile>
       <ProgramDatabaseFile>$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)\$(TargetName).pdb</ProgramDatabaseFile>
@@ -185,12 +203,23 @@
     <PostBuildEvent>
       <Message>copy /Y "$(SolutionDir)$(ProjectName)\Libraries\*.dll" "$(SolutionDir)$(ProjectName)\bin\$(ConfigurationName)\$(PlatformTarget)"</Message>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>obj\$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="seetaEx\QualityOfClarityEx.cpp" />
+    <ClCompile Include="seetaEx\QualityOfNoMask.cpp" />
     <ClCompile Include="ViewFace.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ViewFace.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
